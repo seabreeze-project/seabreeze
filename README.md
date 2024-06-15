@@ -5,3 +5,4 @@ Seabreeze is a really simple container orchestration tool with superpowers, opti
 ## Features
 
 - **Project Management:** Easily create and manage multiple compose projects.
+- **Script Runner:** Run predefined commands within containers and on the host.
