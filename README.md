@@ -8,6 +8,7 @@ It serves as a "poor man's Kubernetes" while also providing a comprehensive set 
 
 - **Project Management:** Easily create and manage multiple compose projects.
 - **Script Runner:** Run predefined commands within containers and on the host.
+- **Shell Mode (WIP):** Run Seabreeze commands in an interactive shell-like interface.
 
 ### Planned Features
 
@@ -15,7 +16,6 @@ It serves as a "poor man's Kubernetes" while also providing a comprehensive set 
 - **Cron System:** Schedule commands to run automatically in containers based on a defined schedule.
 - **Docker API Proxy:** Control and restrict access to Docker endpoints.
 - **Recipes:** Automatically set up projects using predefined workflows.
-- **Shell Mode:** Run Seabreeze commands in an interactive shell-like interface.
 
 ## Contributing
 
