@@ -13,6 +13,16 @@ func StringIsNumber(s string) bool {
 	return err == nil
 }
 
+// StringInSlice returns true if the given string is in the given slice
+func StringInSlice(value string, slice []string) bool {
+	for _, sliceValue := range slice {
+		if value == sliceValue {
+			return true
+		}
+	}
+	return false
+}
+
 // OpenEditor opens the specified file in the user's editor
 func OpenEditor(path string) error {
 	editor := os.Getenv("EDITOR")

@@ -6,6 +6,7 @@ toolchain go1.21.6
 
 require (
 	github.com/docker/docker v27.0.0+incompatible
+	github.com/gorilla/mux v1.8.1
 	github.com/gosuri/uitable v0.0.4
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.19.0

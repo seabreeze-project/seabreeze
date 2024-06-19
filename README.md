@@ -24,3 +24,7 @@ We welcome and appreciate contributions! Please fork the repository and submit a
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgements
+
+- Docker API Proxy is based on [docker-proxy-acl](https://github.com/titpetric/docker-proxy-acl)
