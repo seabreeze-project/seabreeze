@@ -28,3 +28,4 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 ## Acknowledgements
 
 - Docker API Proxy is based on [docker-proxy-acl](https://github.com/titpetric/docker-proxy-acl)
+- Shell Mode is made possible by [go-prompt](https://github.com/c-bata/go-prompt) and [go-shellwords](https://github.com/mattn/go-shellwords)
