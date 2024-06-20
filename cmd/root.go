@@ -6,7 +6,6 @@ import (
 
 	core "github.com/seabreeze-project/seabreeze/core"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 var (
@@ -38,19 +37,7 @@ func init() {
 }
 
 func initConfig() {
-	if configFile != "" {
-		// Use config file from the flag
-		viper.SetConfigFile(configFile)
-	} else {
-		viper.AddConfigPath(Core.ConfigBasePath)
-		viper.SetConfigType("yml")
-		viper.SetConfigName("config")
-	}
-
-	viper.SetEnvPrefix("SEABREEZE")
-	viper.AutomaticEnv()
-
-	if err := viper.ReadInConfig(); err != nil {
+	if err := Core.LoadConfig(configFile); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 	}
 }

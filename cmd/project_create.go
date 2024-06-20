@@ -6,7 +6,6 @@ import (
 	"github.com/seabreeze-project/seabreeze/projects"
 	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 type projectCreateOptions struct {
@@ -28,7 +27,7 @@ var projectCreateCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
 
-		r := projects.NewRepository(viper.GetString("bases.main"))
+		r := projects.NewRepository(Core.Config().Bases.Main)
 		base, err := r.ResolveBase(projectCreateOpt.Base)
 		if err != nil {
 			h.Fatal("cannot open projects base:", err)

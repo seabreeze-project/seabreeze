@@ -6,11 +6,14 @@ import (
 	"runtime"
 
 	"github.com/docker/docker/client"
+	"github.com/spf13/viper"
 )
 
 type Core struct {
 	ConfigBasePath string
+	viper          *viper.Viper
 	client         *client.Client
+	config         *Configuration
 }
 
 func New() *Core {
@@ -23,7 +26,7 @@ func New() *Core {
 
 	return &Core{
 		ConfigBasePath: configBasePath,
-		client:         nil,
+		viper: viper.New(),
 	}
 }
 
@@ -33,6 +36,41 @@ func (c *Core) Here() (string, error) {
 
 func (c *Core) ConfigPath(path string) string {
 	return filepath.Join(c.ConfigBasePath, path)
+}
+
+func (c *Core) Config() *Configuration {
+	if c.config == nil {
+		panic("accessing config before it has been loaded")
+	}
+	return c.config
+}
+
+func (c *Core) ConfigFileUsed() string {
+	return c.viper.ConfigFileUsed()
+}
+
+func (c *Core) LoadConfig(path string) error {
+	if path != "" {
+		c.viper.SetConfigFile(path)
+	} else {
+		c.viper.AddConfigPath(c.ConfigBasePath)
+		c.viper.SetConfigType("yml")
+		c.viper.SetConfigName("config")
+	}
+
+	c.viper.SetEnvPrefix("SEABREEZE")
+	c.viper.AutomaticEnv()
+
+	if err := c.viper.ReadInConfig(); err != nil {
+		return err
+	}
+
+	c.config = &Configuration{}
+	if err := c.viper.Unmarshal(&c.config); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (c *Core) Client() (*client.Client, error) {

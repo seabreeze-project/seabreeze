@@ -4,7 +4,6 @@ import (
 	"github.com/seabreeze-project/seabreeze/projects"
 	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 type projectEditOptions struct {
@@ -24,7 +23,7 @@ var projectEditCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
 
-		r := projects.NewRepository(viper.GetString("bases.main"))
+		r := projects.NewRepository(Core.Config().Bases.Main)
 		project, err := r.Resolve(args[0], projectEditOpt.Base)
 		if err != nil {
 			h.Fatal(err)
