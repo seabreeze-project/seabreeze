@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/docker/docker/client"
+	"github.com/seabreeze-project/seabreeze/core"
 	"github.com/seabreeze-project/seabreeze/util"
 	"gopkg.in/yaml.v3"
 )
@@ -52,6 +53,12 @@ func OpenHere() (*Project, error) {
 		return nil, err
 	}
 	return Open(path)
+}
+
+type CreateOptions struct {
+	ProjectManifest  *ProjectMetadata
+	TemplateFile     string
+	AppConfig *core.Configuration
 }
 
 func Create(path string, opt CreateOptions) (*Project, error) {
@@ -174,6 +181,9 @@ func (p *Project) prepare(opt CreateOptions) error {
 
 	templateVariables := map[string]any{
 		"Project": p,
+	}
+	if opt.AppConfig != nil {
+		templateVariables["Config"] = opt.AppConfig
 	}
 	tmpl, err := template.ParseFiles(templateFile)
 	if err != nil {

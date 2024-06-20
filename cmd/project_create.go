@@ -42,6 +42,7 @@ var projectCreateCmd = &cobra.Command{
 			ProjectManifest: &projects.ProjectMetadata{
 				Description: projectCreateOpt.Description,
 			},
+			AppConfig: Core.Config(),
 		}
 
 		templateFile, err := filepath.Abs(projectCreateOpt.TemplateFile)
