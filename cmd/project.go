@@ -8,7 +8,8 @@ import (
 var projectCmd = &cobra.Command{
 	Use:   "project",
 	Short: "Manage projects",
-	Long:  `Manage projects`,
+	Long:  `This command group allows you to manage projects.
+Calling the "project" command without a subcommand will list available projects.`,
 	Args:  projectListCmd.Args,
 	Run:   projectListCmd.Run,
 }

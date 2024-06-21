@@ -20,7 +20,7 @@ var (
 var projectListCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List projects",
-	Long:  `List available projects`,
+	Long:  `This command lists available projects.`,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
