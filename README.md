@@ -35,6 +35,12 @@ To build the binary on Windows, run:
 go build -o bin\seabreeze.exe
 ```
 
+## History
+
+Seabreeze is a project that has evolved organically over time. It began as a collection of scripts I developed to simplify the management of containerized applications. These scripts were eventually rewritten in Go, and refined to work together seamlessly. Over this period, I accumulated several unimplemented ideas that aligned perfectly with the scope of Seabreeze. These ideas are now finding a home within this ecosystem, with the potential to be implemented in the future.
+
+The name "Seabreeze" itself has a bit of history too. It was inspired by an older, somewhat similar tool I had created. This project name carries forward the essence of that earlier tool, now refined and expanded into a more powerful and versatile solution.
+
 ## Contributing
 
 We welcome and appreciate contributions! Please fork the repository and submit a pull request for review.
