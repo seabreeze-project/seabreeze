@@ -17,6 +17,24 @@ It serves as a "poor man's Kubernetes" while also providing a comprehensive set 
 - **Docker API Proxy:** Control and restrict access to Docker endpoints.
 - **Recipes:** Automatically set up projects using predefined workflows.
 
+## Build
+
+### Linux / macOS
+
+To build the binary on Linux or macOS, run:
+
+```bash
+go build -o bin/seabreeze
+```
+
+### Windows
+
+To build the binary on Windows, run:
+
+```powershell
+go build -o bin\seabreeze.exe
+```
+
 ## Contributing
 
 We welcome and appreciate contributions! Please fork the repository and submit a pull request for review.
