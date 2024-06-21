@@ -1,10 +1,10 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	core "github.com/seabreeze-project/seabreeze/core"
+	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -22,6 +22,8 @@ var rootCmd = &cobra.Command{
 	Long:  `Seabreeze: A really simple container orchestration tool with superpowers`,
 }
 
+var h = util.NewHelper(rootCmd)
+
 // Execute adds all child commands to the root command and sets flags appropriately.
 func Execute() {
 	err := rootCmd.Execute()
@@ -38,6 +40,6 @@ func init() {
 
 func initConfig() {
 	if err := Core.LoadConfig(configFile); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		h.Fatal("cannot load config:", err)
 	}
 }
