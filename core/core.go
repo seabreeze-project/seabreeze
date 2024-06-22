@@ -65,7 +65,7 @@ func (c *Core) LoadConfig(path string) error {
 		return err
 	}
 
-	c.config = &Configuration{}
+	c.config = &Configuration{provider: c.viper}
 	if err := c.viper.Unmarshal(&c.config); err != nil {
 		return err
 	}
