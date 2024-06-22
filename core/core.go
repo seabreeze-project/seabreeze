@@ -45,10 +45,6 @@ func (c *Core) Config() *Configuration {
 	return c.config
 }
 
-func (c *Core) ConfigFileUsed() string {
-	return c.viper.ConfigFileUsed()
-}
-
 func (c *Core) LoadConfig(path string) error {
 	if path != "" {
 		c.viper.SetConfigFile(path)

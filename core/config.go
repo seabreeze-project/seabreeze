@@ -22,6 +22,10 @@ func (c *Configuration) Get(key string) any {
 	return c.provider.Get(key)
 }
 
+func (c *Configuration) SourceFile() string {
+	return c.provider.ConfigFileUsed()
+}
+
 func (c *Configuration) Validate() error {
 	if _, ok := c.Bases["main"]; !ok {
 		return errors.New("main base is not defined")
