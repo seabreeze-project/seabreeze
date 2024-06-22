@@ -42,4 +42,8 @@ func initConfig() {
 	if err := Core.LoadConfig(configFile); err != nil {
 		h.Fatal("cannot load config:", err)
 	}
+
+	if err := Core.Config().Validate(); err != nil {
+		h.Fatal("error validating config:", err)
+	}
 }
