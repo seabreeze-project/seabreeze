@@ -7,7 +7,6 @@ import (
 	"github.com/seabreeze-project/seabreeze/scripts"
 	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 type scriptOptions struct {
@@ -31,7 +30,7 @@ var scriptCmd = &cobra.Command{
 		scriptName := args[1]
 		scriptArgs := args[2:]
 
-		r := projects.NewRepository(viper.GetString("projects_dir"))
+		r := projects.NewRepository(Core.Config().Bases)
 		project, err := r.Resolve(projectName, scriptOpt.ProjectsBase)
 		if err != nil {
 			h.Fatal(err)

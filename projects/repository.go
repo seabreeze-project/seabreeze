@@ -6,16 +6,28 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/seabreeze-project/seabreeze/core"
 	"github.com/seabreeze-project/seabreeze/util"
 )
 
 type ProjectRepository struct {
+	bases    core.BasesMap
 	mainBase *util.Path
 }
 
-func NewRepository(mainBase string) *ProjectRepository {
+func NewRepository(bases core.BasesMap) *ProjectRepository {
+	if bases == nil {
+		panic("bases map must not be nil")
+	}
+
+	mainBasePath, ok := bases["main"]
+	if !ok {
+		panic("main base is not defined")
+	}
+
 	return &ProjectRepository{
-		mainBase: util.NewPath(mainBase),
+		bases:    bases,
+		mainBase: util.NewPath(mainBasePath),
 	}
 }
 
@@ -86,10 +98,26 @@ func (r *ProjectRepository) ResolveBase(base string) (*util.Path, error) {
 		return r.mainBase, nil
 	}
 
-	resolvedBase, err := filepath.Abs(base)
-	if err != nil {
-		return nil, err
+	var resolvedBase string
+	if base[0] == '@' {
+		baseName := base[1:]
+		if baseName == "" {
+			return nil, fmt.Errorf("base name cannot be empty")
+		}
+
+		var ok bool
+		resolvedBase, ok = r.bases[baseName]
+		if !ok {
+			return nil, fmt.Errorf("unknown base name %q", baseName)
+		}
+	} else {
+		var err error
+		resolvedBase, err = filepath.Abs(base)
+		if err != nil {
+			return nil, err
+		}
 	}
+
 	if _, err := os.Stat(resolvedBase); os.IsNotExist(err) {
 		return nil, fmt.Errorf("projects base directory %q does not exist", base)
 	}

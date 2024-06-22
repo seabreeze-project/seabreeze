@@ -27,7 +27,7 @@ var projectCreateCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
 
-		r := projects.NewRepository(Core.Config().Bases.Main)
+		r := projects.NewRepository(Core.Config().Bases)
 		base, err := r.ResolveBase(projectCreateOpt.Base)
 		if err != nil {
 			h.Fatal("cannot open projects base:", err)

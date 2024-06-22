@@ -23,7 +23,7 @@ var projectEditCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
 
-		r := projects.NewRepository(Core.Config().Bases.Main)
+		r := projects.NewRepository(Core.Config().Bases)
 		project, err := r.Resolve(args[0], projectEditOpt.Base)
 		if err != nil {
 			h.Fatal(err)

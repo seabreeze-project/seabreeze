@@ -25,7 +25,7 @@ var projectListCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		h := util.NewHelper(cmd)
 
-		r := projects.NewRepository(Core.Config().Bases.Main)
+		r := projects.NewRepository(Core.Config().Bases)
 		list, err := r.List(projectListOpt.Base)
 		if err != nil {
 			h.Fatal(err)
