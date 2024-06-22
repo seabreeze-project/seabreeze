@@ -3,8 +3,8 @@ package cmd
 import (
 	"path/filepath"
 
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/seabreeze-project/seabreeze/projects"
-	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -25,7 +25,7 @@ var projectCreateCmd = &cobra.Command{
 	Long:  `This command will create a new project.`,
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		r := projects.NewRepository(Core.Config().Bases)
 		base, err := r.ResolveBase(projectCreateOpt.Base)

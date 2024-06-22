@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/seabreeze-project/seabreeze/util"
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +12,7 @@ var configBaseListCmd = &cobra.Command{
 	Long:  `This command lists available bases.`,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		table := h.Table()
 		table.AddRow("NAME", "PATH")

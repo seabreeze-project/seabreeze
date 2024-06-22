@@ -3,9 +3,9 @@ package cmd
 import (
 	"os"
 
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/seabreeze-project/seabreeze/projects"
 	"github.com/seabreeze-project/seabreeze/scripts"
-	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -24,7 +24,7 @@ var scriptCmd = &cobra.Command{
 	Short: "Run a defined script",
 	Long:  `Run a script defined in the project's manifest file.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		projectName := args[0]
 		scriptName := args[1]

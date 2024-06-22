@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/seabreeze-project/seabreeze/projects"
-	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +23,7 @@ var projectListCmd = &cobra.Command{
 	Long:  `This command lists available projects.`,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		r := projects.NewRepository(Core.Config().Bases)
 		list, err := r.List(projectListOpt.Base)

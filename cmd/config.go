@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/seabreeze-project/seabreeze/util"
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/spf13/cobra"
 )
 
@@ -13,7 +13,7 @@ var configCmd = &cobra.Command{
 Calling the "config" command without a subcommand will print information about the loaded configuration.`,
 	Args: cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		table := h.Table()
 		table.Wrap = true

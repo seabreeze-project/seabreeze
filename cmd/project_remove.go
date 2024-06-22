@@ -3,8 +3,8 @@ package cmd
 import (
 	"os"
 
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/seabreeze-project/seabreeze/projects"
-	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -24,7 +24,7 @@ var projectRemoveCmd = &cobra.Command{
 	Long:    `This command will remove a project.`,
 	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		r := projects.NewRepository(Core.Config().Bases)
 		project, err := r.Resolve(args[0], projectRemoveOpt.Base)

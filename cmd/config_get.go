@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/seabreeze-project/seabreeze/util"
+	"github.com/seabreeze-project/seabreeze/console"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 )
@@ -13,7 +13,7 @@ var configGetCmd = &cobra.Command{
 	Long:  `This command returns the value of the given configuration key.`,
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		h := util.NewHelper(cmd)
+		h := console.NewHelper(cmd)
 
 		val := Core.Config().Get(args[0])
 		if val == nil {

@@ -3,8 +3,8 @@ package cmd
 import (
 	"os"
 
+	"github.com/seabreeze-project/seabreeze/console"
 	core "github.com/seabreeze-project/seabreeze/core"
-	"github.com/seabreeze-project/seabreeze/util"
 	"github.com/spf13/cobra"
 )
 
@@ -22,7 +22,7 @@ var rootCmd = &cobra.Command{
 	Long:  `Seabreeze: A really simple container orchestration tool with superpowers`,
 }
 
-var h = util.NewHelper(rootCmd)
+var h = console.NewHelper(rootCmd)
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 func Execute() {
