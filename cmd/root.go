@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/seabreeze-project/seabreeze/console"
-	core "github.com/seabreeze-project/seabreeze/core"
+	"github.com/seabreeze-project/seabreeze/core"
 	"github.com/spf13/cobra"
 )
 

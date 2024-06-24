@@ -19,7 +19,7 @@ func setupHostProcessForUser(process *exec.Cmd, u *user.User) error {
 	if err != nil {
 		return fmt.Errorf("invalid gid %d: %w", gid, err)
 	}
-	
+
 	process.SysProcAttr = &syscall.SysProcAttr{
 		Credential: &syscall.Credential{
 			Uid: uint32(uid),

@@ -26,7 +26,7 @@ func New() *Core {
 
 	return &Core{
 		ConfigBasePath: configBasePath,
-		viper: viper.New(),
+		viper:          viper.New(),
 	}
 }
 

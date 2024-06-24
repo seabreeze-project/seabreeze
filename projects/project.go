@@ -56,9 +56,9 @@ func OpenHere() (*Project, error) {
 }
 
 type CreateOptions struct {
-	ProjectManifest  *ProjectMetadata
-	TemplateFile     string
-	AppConfig *core.Configuration
+	ProjectManifest *ProjectMetadata
+	TemplateFile    string
+	AppConfig       *core.Configuration
 }
 
 func Create(path string, opt CreateOptions) (*Project, error) {
