@@ -13,7 +13,7 @@ It serves as a "poor man's Kubernetes" while also providing a comprehensive set 
 ### Planned Features
 
 - **VCS Integration:** Clone and update source code that is used for service containers.
-- **Cron System:** Schedule commands to run automatically in containers based on a defined schedule.
+- **Tasks (Cronjobs):** Automatically run commands in containers based on a defined schedule.
 - **Docker API Proxy:** Control and restrict access to Docker endpoints.
 - **Recipes:** Automatically set up projects using predefined workflows.
 
@@ -41,9 +41,13 @@ Seabreeze is a project that has evolved organically over time. It began as a col
 
 The name "Seabreeze" itself has a bit of history too. It was inspired by an older, somewhat similar tool I had created. This project name carries forward the essence of that earlier tool, now refined and expanded into a more powerful and versatile solution.
 
+— [secondtruth](https://github.com/secondtruth)
+
 ## Contributing
 
-We welcome and appreciate contributions! Please fork the repository and submit a pull request for review.
+We welcome contributions! Feel free to fork the repository and submit a pull request for review.
+
+We appreciate all kinds of contributions, whether they are new code, bug fixes, documentation improvements, or fresh ideas. We encourage you to open an issue to discuss your ideas or to report any bugs you encounter.
 
 ## License
 
