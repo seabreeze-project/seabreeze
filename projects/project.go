@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/docker/docker/client"
-	"github.com/seabreeze-project/seabreeze/core"
+	"github.com/seabreeze-project/seabreeze/config"
 	"github.com/seabreeze-project/seabreeze/util"
 	"gopkg.in/yaml.v3"
 )
@@ -58,7 +58,7 @@ func OpenHere() (*Project, error) {
 type CreateOptions struct {
 	ProjectManifest *ProjectMetadata
 	TemplateFile    string
-	AppConfig       *core.Configuration
+	AppConfig       *config.Configuration
 }
 
 func Create(path string, opt CreateOptions) (*Project, error) {

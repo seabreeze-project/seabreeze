@@ -6,16 +6,16 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/seabreeze-project/seabreeze/core"
+	"github.com/seabreeze-project/seabreeze/config"
 	"github.com/seabreeze-project/seabreeze/util"
 )
 
 type ProjectRepository struct {
-	bases    core.BasesMap
+	bases    config.BasesMap
 	mainBase *util.Path
 }
 
-func NewRepository(bases core.BasesMap) *ProjectRepository {
+func NewRepository(bases config.BasesMap) *ProjectRepository {
 	if bases == nil {
 		panic("bases map must not be nil")
 	}

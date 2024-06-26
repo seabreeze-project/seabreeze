@@ -6,13 +6,14 @@ import (
 	"runtime"
 
 	"github.com/docker/docker/client"
+	"github.com/seabreeze-project/seabreeze/config"
 	"github.com/spf13/viper"
 )
 
 type Core struct {
 	ConfigBasePath string
 	client         *client.Client
-	config         *Configuration
+	config         *config.Configuration
 }
 
 func New() *Core {
@@ -36,7 +37,7 @@ func (c *Core) ConfigPath(path string) string {
 	return filepath.Join(c.ConfigBasePath, path)
 }
 
-func (c *Core) Config() *Configuration {
+func (c *Core) Config() *config.Configuration {
 	if c.config == nil {
 		panic("accessing config before it has been loaded")
 	}
@@ -57,7 +58,7 @@ func (c *Core) LoadConfig(path string) error {
 	v.SetEnvPrefix("SEABREEZE")
 	v.AutomaticEnv()
 
-	config, err := LoadConfig(v)
+	config, err := config.LoadConfig(v)
 	if err != nil {
 		return err
 	}
