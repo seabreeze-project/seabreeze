@@ -71,17 +71,9 @@ func (c *Core) Client() (*client.Client, error) {
 		return c.client, nil
 	}
 
-	if os.Getenv("DOCKER_HOST") == "" {
-		if runtime.GOOS == "windows" {
-			os.Setenv("DOCKER_HOST", "npipe:////./pipe/docker_engine")
-		} else {
-			os.Setenv("DOCKER_HOST", "unix:///var/run/docker.sock")
-		}
-	}
-
-	cli, err := client.NewClientWithOpts(client.FromEnv)
+	cli, err := createDockerClient()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	c.client = cli
