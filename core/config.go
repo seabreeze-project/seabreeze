@@ -18,6 +18,19 @@ type ReverseProxyConfig struct {
 	NetworkName string `mapstructure:"network_name"`
 }
 
+func LoadConfig(v *viper.Viper) (*Configuration, error) {
+	if err := v.ReadInConfig(); err != nil {
+		return nil, err
+	}
+
+	config := &Configuration{provider: v}
+	if err := v.Unmarshal(&config); err != nil {
+		return nil, err
+	}
+
+	return config, nil
+}
+
 func (c *Configuration) Get(key string) any {
 	return c.provider.Get(key)
 }

@@ -11,7 +11,6 @@ import (
 
 type Core struct {
 	ConfigBasePath string
-	viper          *viper.Viper
 	client         *client.Client
 	config         *Configuration
 }
@@ -26,7 +25,6 @@ func New() *Core {
 
 	return &Core{
 		ConfigBasePath: configBasePath,
-		viper:          viper.New(),
 	}
 }
 
@@ -46,26 +44,25 @@ func (c *Core) Config() *Configuration {
 }
 
 func (c *Core) LoadConfig(path string) error {
+	v := viper.New()
+
 	if path != "" {
-		c.viper.SetConfigFile(path)
+		v.SetConfigFile(path)
 	} else {
-		c.viper.AddConfigPath(c.ConfigBasePath)
-		c.viper.SetConfigType("yml")
-		c.viper.SetConfigName("config")
+		v.AddConfigPath(c.ConfigBasePath)
+		v.SetConfigType("yml")
+		v.SetConfigName("config")
 	}
 
-	c.viper.SetEnvPrefix("SEABREEZE")
-	c.viper.AutomaticEnv()
+	v.SetEnvPrefix("SEABREEZE")
+	v.AutomaticEnv()
 
-	if err := c.viper.ReadInConfig(); err != nil {
+	config, err := LoadConfig(v)
+	if err != nil {
 		return err
 	}
 
-	c.config = &Configuration{provider: c.viper}
-	if err := c.viper.Unmarshal(&c.config); err != nil {
-		return err
-	}
-
+	c.config = config
 	return nil
 }
 
