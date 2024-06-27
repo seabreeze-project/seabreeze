@@ -49,7 +49,7 @@ func (s *session) start() {
 func (s *session) execute(cmdline string) {
 	err := s.shell.DispatchString(cmdline)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
@@ -64,7 +64,7 @@ func (s *session) complete(in prompt.Document) []prompt.Suggest {
 	var suggest []prompt.Suggest
 	if s.cursorState.PreviousWordsN() == 0 {
 		suggest = s.shell.Suggestions()
-	} else {
+	} else if s.shell.Completer != nil {
 		suggest = s.shell.Completer(s.cursorState)
 	}
 	return prompt.FilterHasPrefix(suggest, in.GetWordBeforeCursor(), true)
