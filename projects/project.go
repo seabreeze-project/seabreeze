@@ -132,7 +132,7 @@ func (p *Project) Container(service string, replica int) (*Container, error) {
 		}
 		containerName = s.ContainerName
 	} else {
-		if replica > s.Replicas {
+		if replica > 1 && replica > s.Replicas {
 			return nil, fmt.Errorf("cannot access replica %d of service %q: service only defines %d replicas", replica, service, s.Replicas)
 		}
 		containerName = fmt.Sprintf("%s-%s-%d", p.Name, service, replica)
