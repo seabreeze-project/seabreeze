@@ -50,20 +50,24 @@ func (h *Helper) PrintErrf(format string, i ...interface{}) {
 	h.cmd.PrintErrf(format, i...)
 }
 
+// Status is a convenience method to Println a status update to the defined output, fallback to Stderr if not set.
 func (h *Helper) Status(i ...interface{}) {
 	h.cmd.Printf("[%s] ", h.cmd.CommandPath())
 	h.cmd.Println(i...)
 }
 
+// Statusf is a convenience method to Printf(ln) a status update to the defined output, fallback to Stderr if not set.
 func (h *Helper) Statusf(format string, i ...interface{}) {
 	h.Status(fmt.Sprintf(format, i...))
 }
 
+// Fatal is a convenience method to Println to the defined Err output and then exit with code 1.
 func (h *Helper) Fatal(args ...interface{}) {
 	h.PrintErrln(args...)
 	os.Exit(1)
 }
 
+// Fatalf is a convenience method to Printf(ln) to the defined Err output and then exit with code 1.
 func (h *Helper) Fatalf(format string, args ...interface{}) {
 	h.Fatal(fmt.Sprintf(format, args...))
 }
