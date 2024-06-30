@@ -4,18 +4,20 @@ Seabreeze is a really simple container orchestration tool with superpowers, opti
 
 It serves as a "poor man's Kubernetes" while also providing a comprehensive set of utilities for containerized environments.
 
+**Please note that Seabreeze is currently under heavy development. We are open to and deeply thankful for constructive feedback, innovative ideas, and any kind of code contributions.** Your input can help shape the future of this project and make it more useful for the community. Please join the discussions in our [issue tracker](https://github.com/seabreeze-project/seabreeze/issues).
+
 ## Features
 
-- **Project Management:** Easily create and manage multiple compose projects.
-- **Script Runner:** Run predefined commands within containers and on the host.
-- **Shell Mode (WIP):** Run Seabreeze commands in an interactive shell-like interface.
+- 🚀 **Project Management:** Easily create and manage multiple compose projects.
+- 📜 **Script Runner:** Run predefined commands within containers and on the host.
+- 🐚 **Shell Mode (WIP):** Run Seabreeze commands in an interactive shell-like interface.
 
 ### Planned Features
 
-- **VCS Integration:** Clone and update source code that is used for service containers.
-- **Tasks (Cronjobs):** Automatically run commands in containers based on a defined schedule.
-- **Docker API Proxy:** Control and restrict access to Docker endpoints.
-- **Recipes:** Automatically set up projects using predefined workflows.
+- 🔀 **VCS Integration:** Clone and update source code that is used for service containers.
+- ⏰ **Tasks (Cronjobs):** Automatically run commands in containers based on a defined schedule.
+- 🔐 **Docker API Proxy:** Control and restrict access to Docker endpoints.
+- 📚 **Recipes:** Automatically set up projects using predefined workflows.
 
 ## Build
 
@@ -47,7 +49,7 @@ The name "Seabreeze" itself has a bit of history too. It was inspired by an olde
 
 We welcome contributions! Feel free to fork the repository and submit a pull request for review.
 
-We appreciate all kinds of contributions, whether they are new code, bug fixes, documentation improvements, or fresh ideas. We encourage you to open an issue to discuss your ideas or to report any bugs you encounter.
+We appreciate all kinds of contributions, whether they are new code, bug reports and fixes, documentation improvements, or fresh ideas. We encourage you to open an issue to discuss your ideas or to report any bugs you encounter.
 
 ## License
 
