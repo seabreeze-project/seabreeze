@@ -11,14 +11,16 @@ import (
 )
 
 func setupHostProcessForUser(process *exec.Cmd, u *user.User) error {
-	uid, err := strconv.Atoi(u.Uid)
+	uid64, err := strconv.ParseUint(u.Uid, 10, 32)
 	if err != nil {
-		return fmt.Errorf("invalid uid %d: %w", uid, err)
+		return fmt.Errorf("invalid uid %s: %w", u.Uid, err)
 	}
-	gid, err := strconv.Atoi(u.Gid)
+	uid := uint32(uid64)
+	gid64, err := strconv.ParseUint(u.Gid, 10, 32)
 	if err != nil {
-		return fmt.Errorf("invalid gid %d: %w", gid, err)
+		return fmt.Errorf("invalid gid %s: %w", u.Gid, err)
 	}
+	gid := uint32(gid64)
 
 	process.SysProcAttr = &syscall.SysProcAttr{
 		Credential: &syscall.Credential{
